@@ -1,0 +1,25 @@
+spring:
+    kafka:
+        producer:
+            bootstrap-servers: localhost:9092
+            key-serializer: org.apache.kafka.common.serialization.StringSerializer
+            value: org.springframework.kafka.support.serializer.JsonSerializer
+            properties:
+                spring.json.type.mapping: orderConfirmation:com.ricardtadeiromero.ecommerce.kafka.OrderConfirmation
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/order
+        username: root
+        password: password
+    jpa:
+        hibernate:
+          ddl-auto: create
+        database: postgresql
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+server:
+    port: 8070
+application:
+    config:     
+        customer-url: http://localhost:8222/api/v1/customers
+        payment-url: http://localhost:8222/api/v1/payments
+        product-url: http://localhost:8222/api/v1/products
